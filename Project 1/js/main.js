@@ -1,27 +1,48 @@
-//Project 3
-//VFW Term 1208
 //Zachary Crosser
-window.addEventListener("DOMContentLoaded", function(){
+//Project 3
+//MiU Term 1209
+//Zachary Crosser
+
+$('#home').on('pageinit', function(){
+	//code needed for home page goes here
+});	
+		
+$('#addTransaction').on('pageinit', function(){
+
+		var myForm = $('#transform');
+		    myForm.validate({
+			invalidHandler: function(form, validator) {
+			},
+			submitHandler: function() {
+		var data = myForm.serializeArray();
+			storeData(data);
+		}
+	});	
+//any other code needed for addItem page goes here	
+});
+
+//The functions below can go inside or outside the pageinit function for the page in which it is needed.
+
   
-  function $(x){
+  function r(x){
     var theElement = document.getElementById(x);
     return theElement;
   }
   
-  var makeDropMenu = function(){
-    var formTag = document.getElementsByTagName("form"),
-        selectLi = $('category'),
-        makeSelect = document.createElement('select');
-        makeSelect.setAttribute("id", "groups");
-    for(var i=0, j=catagory.length; i<j; i++){
-      var makeOption = document.createElement('option');
-      var optText = catagory[i];
-      makeOption.setAttribute("value", optText);
-      makeOption.innerHTML = optText;
-      makeSelect.appendChild(makeOption);
-    }
-    selectLi.appendChild(makeSelect);
-  }
+  // var makeDropMenu = function(){
+  //   var formTag = document.getElementsByTagName("form"),
+  //       selectLi = $('category'),
+  //       makeSelect = document.createElement('select');
+  //       makeSelect.setAttribute("id", "groups");
+  //   for(var i=0, j=catagory.length; i<j; i++){
+  //     var makeOption = document.createElement('option');
+  //     var optText = catagory[i];
+  //     makeOption.setAttribute("value", optText);
+  //     makeOption.innerHTML = optText;
+  //     makeSelect.appendChild(makeOption);
+  //   }
+  //   selectLi.appendChild(makeSelect);
+  // }
   
   var getRadioType = function(){
     var radios = document.forms[0].types;
@@ -33,8 +54,8 @@ window.addEventListener("DOMContentLoaded", function(){
   }
   
   var getCheckBoxStatus = function(){
-    if($('recurring').checked){
-      checkBoxValue = $('recurring').value;
+    if(r('recurring').checked){
+      checkBoxValue = r('recurring').value;
     }else{
       checkBoxValue = "No";
     }
@@ -43,17 +64,17 @@ window.addEventListener("DOMContentLoaded", function(){
   var controls = function(n){
     switch(n){
       case "on":
-        $('form').style.display = "none";
-        $('clearData').style.display ="inline";
-        $('showInfo').style.display ="none";
-        $('addNew').style.display ="inline";
+        $('#transform').hide();
+        $('#clearData').addClass("inline");
+        $('#showInfo').hide();
+        $('#addNew').addClass("inline");
         break;
       case "off":
-        $('form').style.display = "block";
-        $('clearData').style.display ="inline";
-        $('showInfo').style.display ="inline";
-        $('addNew').style.display ="none";
-        $("data").style.display ="none";
+       $('#transform').show();
+       $('#clearData').addClass("inline");
+       $('#showInfo').addClass("inline");
+       $('#addNew').hide();
+       $("#data").hide();
       default:
         return false;
     }
@@ -68,19 +89,19 @@ window.addEventListener("DOMContentLoaded", function(){
     getRadioType();
     getCheckBoxStatus();
     var item            = {};
-        item.date       =["Date", $('date').value];
+        item.date       =["Date", r('date').value];
         item.transType  =["Type", typeValue];
-        item.catagory   =["Catagory", $('groups').value];
-        item.amount     =["Amount", $('amount').value];
-        item.slider     =["Slider", $('slider').value];
+        item.catagory   =["Catagory", r('groups').value];
+        item.amount     =["Amount", r('amount').value];
+        item.slider     =["Slider", r('slider').value];
         item.checkBox   =["Is it a reccuring transaction:", checkBoxValue];
-        item.notes      =["Notes", $('notes').value];
+        item.notes      =["Notes", r('notes').value];
     localStorage.setItem(id, JSON.stringify(item));
     alert("Transaction Saved!");
     return item
   }
   
-  var showData = function(){
+  var showData = function(catagory){
     controls("on");
     if(localStorage.length === 0){
       alert("There is no data in Local Storage, static data function added!")
@@ -88,12 +109,12 @@ window.addEventListener("DOMContentLoaded", function(){
      showData();
     } else {
       var makeDiv = document.createElement("div");
-      makeDiv.setAttribute("id", "data");
-      var makeList = $('storedTransactions');
+      makeDiv.setAttribute("id", "transactions");
+      var makeList = r('storedTransactions');
       makeList.innerHTML = "";
       makeDiv.appendChild(makeList);
       document.body.appendChild(makeDiv);
-      $("data").style.display ="block"
+      r("transactions").style.display ="block"
       for(var i=0, len=localStorage.length; i<len; i++){
         var makeLi = document.createElement('li');
         var linksLi = document.createElement('li');
@@ -103,7 +124,7 @@ window.addEventListener("DOMContentLoaded", function(){
         var obj = JSON.parse(value);
         var makeSubList = document.createElement('ul');
         makeLi.appendChild(makeSubList);
-        makeLi.setAttribute('class', 'transaction ' + obj.catagory[1]);
+        makeLi.setAttribute('class', 'transaction ' + obj.catagory[0]);
         for(var s in obj){
           var makeSubLi = document.createElement('li');
           makeSubList.appendChild(makeSubLi);
@@ -144,9 +165,9 @@ window.addEventListener("DOMContentLoaded", function(){
   var editItem = function(key){
     var value = localStorage.getItem(key);
     var item = JSON.parse(value);
-    var submit = $('submit');
+    var submit = r('submit');
     controls("off");
-    $('date').value = item.date[1];
+    r('date').value = item.date[1];
     var radios = document.forms[0].types;
     for(var i=0; i<radios.length; i++){
       if(radios[i].value == "Deposit" && item.transType[1] == "Deposit"){
@@ -160,12 +181,12 @@ window.addEventListener("DOMContentLoaded", function(){
       }  
     }
     if(item.checkBox[1] == "Yes"){
-      $('recurring').setAttribute("checked", "checked");
+      r('recurring').setAttribute("checked", "checked");
     }
-    $('groups').value = item.catagory[1];
-    $('amount').value = item.amount[1];
-    $('slider').value = item.slider[1];
-    $('notes').value = item.notes[1];
+    r('groups').value = item.catagory[1];
+    r('amount').value = item.amount[1];
+    r('slider').value = item.slider[1];
+    r('notes').value = item.notes[1];
     
     submit.value = "Edit Transaction";
     submit.key = key;
@@ -196,13 +217,13 @@ window.addEventListener("DOMContentLoaded", function(){
   }
   
   var validate = function(evt){
-    console.log($('submit').key);
-    var getDate      =$('date');
-    var getCatagory  =$('groups');
-    var getAmount    =$('amount');
-    var getNotes     =$('notes');
+    console.log(r('submit').key);
+    var getDate      =r('date');
+    var getCatagory  =r('groups');
+    var getAmount    =r('amount');
+    var getNotes     =r('notes');
     
-    errMsg.innerHTML = "";
+    //errMsg.innerHTML = "";
     getCatagory.setAttribute("class", "");
     getDate.setAttribute("class", "");
     getAmount.setAttribute("class", "");
@@ -236,12 +257,12 @@ window.addEventListener("DOMContentLoaded", function(){
       for(var i=0, j=messageAry.length; i < j; i++){
         var txt = document.createElement('li');
         txt.innerHTML = messageAry[i];
-        errMsg.appendChild(txt);
+        //errMsg.appendChild(txt);
       }
       evt.preventDefault();
       return false;
     }else{
-      return storeTransaction($('submit').key);
+      return storeTransaction(r('submit').key);
     }
   }
  
@@ -250,9 +271,9 @@ window.addEventListener("DOMContentLoaded", function(){
   var catagory = ["--Choose a Catagory--", "Food", "Credit_Card", "Entertainment", "ATM_Withdraw"],
       typeValue,sss
       checkBoxValue = "No"
-      errMsg = $('errors');
+      errMsg = r('errors');
       ;
-  makeDropMenu();
+  // makeDropMenu();
 
   document.getElementById('showInfo').onclick = (function(evt) {showData(evt);});
   document.getElementById('clearData').onclick = (function(evt) {clearData(evt);});
@@ -261,3 +282,7 @@ window.addEventListener("DOMContentLoaded", function(){
   
   
 });
+
+  
+  
+  
