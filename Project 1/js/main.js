@@ -1,49 +1,12 @@
 //Zachary Crosser
-//Project 3
-//MiU Term 1209
+//Project 1
+//ASDI Term 1301
 //Zachary Crosser
-
-$('#home').on('pageinit', function(){
-	//code needed for home page goes here
-});	
 		
-$('#addTransaction').on('pageinit', function(){
-
-		var myForm = $('#transform');
-		    myForm.validate({
-			invalidHandler: function(form, validator) {
-			},
-			submitHandler: function() {
-		var data = myForm.serializeArray();
-			storeData(data);
-		}
-	});	
-//any other code needed for addItem page goes here	
-});
-
-//The functions below can go inside or outside the pageinit function for the page in which it is needed.
-
-  
-  function r(x){
-    var theElement = document.getElementById(x);
-    return theElement;
-  }
-  
-  // var makeDropMenu = function(){
-  //   var formTag = document.getElementsByTagName("form"),
-  //       selectLi = $('category'),
-  //       makeSelect = document.createElement('select');
-  //       makeSelect.setAttribute("id", "groups");
-  //   for(var i=0, j=catagory.length; i<j; i++){
-  //     var makeOption = document.createElement('option');
-  //     var optText = catagory[i];
-  //     makeOption.setAttribute("value", optText);
-  //     makeOption.innerHTML = optText;
-  //     makeSelect.appendChild(makeOption);
-  //   }
-  //   selectLi.appendChild(makeSelect);
-  // }
-  
+$(document).on('pageinit', function(){
+	//any other code needed for addItem page goes here
+	  function r(x){
+    var theElement = document.getEl
   var getRadioType = function(){
     var radios = document.forms[0].types;
     for(var i=0; i<radios.length; i++){
@@ -286,3 +249,6 @@ $('#addTransaction').on('pageinit', function(){
   
   
   
+});
+
+//The functions below can go inside or outside the pageinit function for the page in which it is needed.
