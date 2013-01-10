@@ -2,11 +2,29 @@
 //Project 1
 //ASDI Term 1301
 //Zachary Crosser
-		
-$(document).on('pageinit', function(){
-	//any other code needed for addItem page goes here
-	  function r(x){
-    var theElement = document.getEl
+
+window.addEventListener("DOMContentLoaded", function(){
+  
+  function r(x){
+    var theElement = document.getElementById(x);
+    return theElement;
+  }
+  
+  // var makeDropMenu = function(){
+  //   var formTag = document.getElementsByTagName("form"),
+  //       selectLi = $('category'),
+  //       makeSelect = document.createElement('select');
+  //       makeSelect.setAttribute("id", "groups");
+  //   for(var i=0, j=catagory.length; i<j; i++){
+  //     var makeOption = document.createElement('option');
+  //     var optText = catagory[i];
+  //     makeOption.setAttribute("value", optText);
+  //     makeOption.innerHTML = optText;
+  //     makeSelect.appendChild(makeOption);
+  //   }
+  //   selectLi.appendChild(makeSelect);
+  // }
+  
   var getRadioType = function(){
     var radios = document.forms[0].types;
     for(var i=0; i<radios.length; i++){
@@ -249,6 +267,3 @@ $(document).on('pageinit', function(){
   
   
   
-});
-
-//The functions below can go inside or outside the pageinit function for the page in which it is needed.
