@@ -2,10 +2,38 @@
 //Project 1
 //ASDI Term 1301
 //Zachary Crosser
+$('#home').on('pageinit', function(event){
+	//code needed for home page goes here
+});	
+		
+$('#aboutCompany').on('pageInit', function(event){
+	//code needed for aboutCompany page goes here
+});	
 
-(function($) {
-  $(document).on("pageinit", function(){
+$('#aboutApp').on('pageInit', function(event){
+	//code needed for aboutApp page goes here
+});	
 
+$('#contactUs').on('pageInit', function(event){
+	//code needed for contactUs page goes here
+});	
+
+$('#staff').on('pageInit', function(event){
+	//code needed for staff page goes here
+});	
+
+$('#order').on('pageInit', function(event){
+	//code needed for order page goes here
+});	
+
+$('#transerrors').on('pageInit', function(event){
+	//code needed for transerrors page goes here
+});	
+
+$('#addTransaction').on('pageinit',function(event){
+  alert( 'This page was just enhanced by jQuery Mobile!' );
+
+	//any other code needed for addTransaction page goes here
     var getRadioType = function(){
       var radios = $('#types input[type="radio"]')
       radios.each(function(index, radio) {
@@ -233,8 +261,7 @@
       validate(evt);
     });
   
-  });
-})
+});
 
   
   
