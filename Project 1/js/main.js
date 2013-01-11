@@ -2,36 +2,38 @@
 //Project 1
 //ASDI Term 1301
 //Zachary Crosser
-$('#home').on('pageinit', function(event){
-	//code needed for home page goes here
-});	
-		
-$('#aboutCompany').on('pageInit', function(event){
-	//code needed for aboutCompany page goes here
-});	
-
-$('#aboutApp').on('pageInit', function(event){
-	//code needed for aboutApp page goes here
-});	
-
-$('#contactUs').on('pageInit', function(event){
-	//code needed for contactUs page goes here
-});	
-
-$('#staff').on('pageInit', function(event){
-	//code needed for staff page goes here
-});	
-
-$('#order').on('pageInit', function(event){
-	//code needed for order page goes here
-});	
-
-$('#transerrors').on('pageInit', function(event){
-	//code needed for transerrors page goes here
-});	
-
-$('#addTransaction').on('pageinit',function(event){
-  alert( 'This page was just enhanced by jQuery Mobile!' );
+$(function() {
+alert("page ready");
+// $('#home').on('pageinit', function(event){
+//  //code needed for home page goes here
+// });  
+//    
+// $('#aboutCompany').on('pageInit', function(event){
+//  //code needed for aboutCompany page goes here
+// });  
+// 
+// $('#aboutApp').on('pageInit', function(event){
+//  //code needed for aboutApp page goes here
+// });  
+// 
+// $('#contactUs').on('pageInit', function(event){
+//  //code needed for contactUs page goes here
+// });  
+// 
+// $('#staff').on('pageInit', function(event){
+//  //code needed for staff page goes here
+// });  
+// 
+// $('#order').on('pageInit', function(event){
+//  //code needed for order page goes here
+// });  
+// 
+// $('#transerrors').on('pageInit', function(event){
+//  //code needed for transerrors page goes here
+// });  
+// 
+// $('#addTransaction').on('pageinit',function(event){
+//   alert( 'This page was just enhanced by jQuery Mobile!' );
 
 	//any other code needed for addTransaction page goes here
     var getRadioType = function(){
@@ -91,8 +93,7 @@ $('#addTransaction').on('pageinit',function(event){
         var makeList = $('#storedTransactions');
         makeList.html('');
         makeDiv.append(makeList);
-        $('body').append(makDiv);
-      
+        $('body').append(makeDiv);
         $("#transactions").style.display ="block"
         for(var i=0, len=localStorage.length; i<len; i++){
           var makeLi = $('<li class="transaction ' + obj.catagory[0] + '"></li>') 
@@ -224,11 +225,11 @@ $('#addTransaction').on('pageinit',function(event){
         getDate.attr("class", "errors");
         messageAry.push(dateError);
       }
-      if(!(new RegExp("^[0-9\.]+$", "i")).test(getAmount.value)){
-        var amountError = "Please Enter A Amount";
-        getAmount.attr("class", "errors");
-        messageAry.push(amountError);
-      }
+      // if(!(new RegExp("^[0-9\.]+$", "i")).test(getAmount.value)){
+      //        var amountError = "Please Enter A Amount";
+      //        getAmount.attr("class", "errors");
+      //        messageAry.push(amountError);
+      //      }
       if(messageAry.length >= 1){
         for(var i=0, j=messageAry.length; i < j; i++){
           var txt = $("<li></li>")
