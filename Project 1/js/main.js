@@ -1,5 +1,5 @@
 //Zachary Crosser
-//Project 1
+//Project 2
 //ASDI Term 1301
 //Zachary Crosser
 
@@ -114,6 +114,21 @@ var autoFillData = function (){
     var id = Math.floor(Math.random()*100001);
     localStorage.setItem(id, JSON.stringify(json[j]));
   }  
+}
+
+var writeYamlToLocalStorage = function() {
+  for(var y in yaml) {
+    var id = Math.floor(Math.random()*100001);
+    localStorage.setItem(id, JSON.stringify(yaml[y]));
+  }  
+}
+var showYamlTransactions = function(category) {
+  controls("on");
+  if(localStorage.length === 0){
+   writeYamlToLocalStorage();
+   writeLocalStorageToTransactionsList();
+  }
+  $("#storedTransactions").show();
 }
 
 var makeItemLinks = function(key, linksLi){
@@ -247,6 +262,9 @@ $(function() {
 
     $('#showInfo').on('click', function(evt) {
       showTransactions(evt);
+    });
+    $('#showYamlInfo').on('click', function(evt) {
+      showYamlTransactions(evt);
     });
     $('#clearData').on('click', function(evt) {
       clearData(evt);

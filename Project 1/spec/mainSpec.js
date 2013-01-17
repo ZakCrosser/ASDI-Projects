@@ -39,7 +39,24 @@ describe("Main App", function() {
       writeLocalStorageToTransactionsList();
       expect($("#storedTransactions li.transaction").length).toEqual(20);
     });
-    
+      
   });  
+  
+  describe("#writeYamlToLocalStorage", function() {
+    
+    beforeEach(function() {
+      localStorage.clear();
+    });
+    
+    afterEach(function() {
+      localStorage.clear();
+    });
+    
+    it("should load yaml data into local storage", function() {
+      writeYamlToLocalStorage();
+      expect(localStorage.length).toBeGreaterThan(0);
+    });
+
+  });
   
 });
