@@ -17,12 +17,14 @@
 	<link rel="stylesheet" href="css/jquery.ztwitterfeed.css">
 	<link rel="stylesheet" href="css/style.css"/>
 	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
-	<script src="js/libs/modernizr.custom.min.js"></script>
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script src="js/libs/jquery.ztwitterfeed.min.js" type="text/javascript"></script>
 	<script src="js/json.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://nodeca.github.com/js-yaml/js/js-yaml.js"></script>
+  <script src="js/yaml.js" type="text/javascript"></script>
+  <script src="js/xml.js" type="text/javascript"></script>  
+	<script src="js/libs/modernizr.custom.min.js"></script>
 	<script src="js/libs/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 
@@ -165,9 +167,10 @@
 				</div>
 			<a href= "#transerrors" id="transerrorslink" data-rel="dialog" data-transition="pop">Open Errors</a>
 			</form>
-		<a href="#" data-role="button" data-inline="true" data-mini="true" data-theme="a" data-icon="delete" id="clearData" >Clear Data</a>
-		<a href="#" data-role="button" data-inline="true" data-mini="true" data-theme="a" data-icon="arrow-r" id="showInfo">Display Data</a>
-		<a href="addTransaction" data-role="button" data-inline="true" data-mini="true" data-theme="a" data-icon="arrow-r" id="addNew" style="display:none;">Add New Transaction</a>
+		<a href="#" data-role="button" data-inline="false" data-mini="true" data-theme="a" data-icon="delete" id="clearData" >Clear Data</a>
+		<a href="#" data-role="button" data-inline="false" data-mini="true" data-theme="a" data-icon="arrow-r" id="showJsonInfo">Display JSON Data</a>
+		<a href="#" data-role="button" data-inline="false" data-mini="true" data-theme="a" data-icon="arrow-r" id="showYamlInfo">Display YAML Data</a>
+		<a href="#" data-role="button" data-inline="false" data-mini="true" data-theme="a" data-icon="arrow-r" id="showXmlInfo">Display XML Data</a>
 		
 		<ul id='storedTransactions'></ul>
 		</div>
@@ -364,7 +367,7 @@
 			</div>
 		
 			<!-- content -->
-			<div data-role="content">
+			<div data-role="content" id="errors">
 				<ul>
 					<li>Test</li>
 				</ul>

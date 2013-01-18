@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<transactions>
+  <transaction1>
+    <date>Date, 2013-10-26</date>
+    <transType>Type, Deposit</transType>
+    <category>Category, Credit_Card</category>
+    <amount>Amount, 800.00'</amount>
+    <notes>Notes, New Account</notes>
+  </transaction1>
+  
+  <transaction2>
+    <date>Date, 2013-10-27</date>
+    <transType>Type, Withdraw</transType>
+    <category>Category, Food</category>
+    <amount>Amount, 34.98</amount>
+    <notes>Notes, Jim's Take Out</notes>
+  </transaction2>
+    
+  <transaction3>
+    <date>Date, 2013-10-28</date>
+    <transType>Type, Adjustment</transType>
+    <category>Category, Food</category>
+    <amount>Amount, 3.00</amount>
+    <notes>Notes, Tip</notes>
+  </transaction3>
+  
+  <transaction4>
+    <date>Date, 2013-10-29</date>
+    <transType>Type, Transfer</transType>
+    <category>Category, Entertainment</category>
+    <amount>Amount, 50.00</amount>
+    <notes>Notes, Cash Withdraw</notes>
+  </transaction4>
+  
+  <transaction5>
+    <date>Date, 2013-10-30</date>
+    <transType>Type, Deposit</transType>
+    <category>Category, Credit_Card</category>
+    <amount>Amount, 80.00</amount>
+    <notes>Notes, Pay Bill</notes>
+  </transaction5>
+    
+</transactions>
+
