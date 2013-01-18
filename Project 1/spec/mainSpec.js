@@ -59,4 +59,21 @@ describe("Main App", function() {
 
   });
   
+    describe("#writeXmlToLocalStorage", function() {
+    
+    beforeEach(function() {
+      localStorage.clear();
+    });
+    
+    afterEach(function() {
+      localStorage.clear();
+    });
+    
+    it("should load yaml data into local storage", function() {
+      writeXmlToLocalStorage();
+      expect(localStorage.length).toBeGreaterThan(0);
+    });
+
+  });
+  
 });

@@ -49,16 +49,14 @@ var controls = function(n){
   switch(n){
     case "on":
       $('#transform').hide();
-      $('#clearData').addClass("inline");
       $('#showInfo').hide();
-      $('#addNew').addClass("inline");
       break;
     case "off":
      $('#transform').show();
      $('#clearData').addClass("inline");
      $('#showInfo').addClass("inline");
      $('#addNew').hide();
-     $("#data").hide();
+     $("#showTransactions").hide();
     default:
       return false;
   }
@@ -83,11 +81,11 @@ var storeTransaction = function(key){
   return item;
 }
 
-var showTransactions = function(category) {
+var showJsonTransactions = function(category) {
   controls("on");
   if(localStorage.length === 0){
-   autoFillData();
-   writeLocalStorageToTransactionsList();
+    autoFillData();
+    writeLocalStorageToTransactionsList();
   }
   $("#storedTransactions").show();
 }
@@ -100,10 +98,11 @@ var writeLocalStorageToTransactionsList = function() {
     listItem.addClass("transaction");
     listItem.addClass(transaction.category);
     transactionDetailsList = $("<ul></ul>");
-    for(var tdi in transaction){
-      transactionDetailListItem = $("<li>" + transaction[tdi][0] + " " + transaction[tdi][1] + "</li>");
-      transactionDetailsList.append(transactionDetailListItem);
-    }
+    transactionDetailsList.append($("<li>Date: " + transaction.date + "</li>"));
+    transactionDetailsList.append($("<li>Trans Type: " + transaction.transType + "</li>"));
+    transactionDetailsList.append($("<li>Category: " + transaction.category + "</li>"));
+    transactionDetailsList.append($("<li>Amount: " + transaction.amount + "</li>"));
+    transactionDetailsList.append($("<li>Notes: " + transaction.notes + "</li>"));
     listItem.append(transactionDetailsList);
     list.append(listItem);
   }
@@ -122,11 +121,34 @@ var writeYamlToLocalStorage = function() {
     localStorage.setItem(id, JSON.stringify(yaml[y]));
   }  
 }
+
 var showYamlTransactions = function(category) {
   controls("on");
   if(localStorage.length === 0){
-   writeYamlToLocalStorage();
-   writeLocalStorageToTransactionsList();
+    writeYamlToLocalStorage();
+    writeLocalStorageToTransactionsList();
+  }
+  $("#storedTransactions").show();
+}
+
+var writeXmlToLocalStorage = function() {
+ $(xmlString).find("transaction").each(function(index, transaction) {
+    var id = Math.floor(Math.random()*100001);
+    transactionJson = {
+      "date" : $(transaction).find("date").html(),
+      "transType" : $(transaction).find("type").html(),
+      "category" : $(transaction).find("category").html(),
+      "amount" : $(transaction).find("amount").html()
+    }
+    localStorage.setItem(id, JSON.stringify(transactionJson));
+  });   
+}
+
+var showXmlTransactions = function(){
+  controls("on");
+  if(localStorage.length === 0){
+    writeXmlToLocalStorage();
+    writeLocalStorageToTransactionsList();
   }
   $("#storedTransactions").show();
 }
@@ -259,13 +281,15 @@ $(function() {
         errMsg = $('#errors')
         ;
 
-
-    $('#showInfo').on('click', function(evt) {
-      showTransactions(evt);
+    $('#showJsonInfo').on('click', function(evt) {
+      showJsonTransactions(evt);
     });
     $('#showYamlInfo').on('click', function(evt) {
       showYamlTransactions(evt);
     });
+    $('#showXmlInfo').on('click', function(evt) {
+      showXmlTransactions(evt);
+    });    
     $('#clearData').on('click', function(evt) {
       clearData(evt);
     });

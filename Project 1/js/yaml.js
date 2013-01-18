@@ -3,39 +3,39 @@
 //ASDI Term 1301
 
 yamlString = "transaction1:\n\
-  date: ['Date', '2013-08-21']\n\
-  transType: ['Type', 'Deposit']\n\
-  category: ['Category', 'Credit_Card']\n\
-  amount: ['Amount', '500.00']\n\
-  notes: ['Notes', 'Opening of account']\n\
+  date: 2013-08-21\n\
+  transType: Deposit\n\
+  category: Credit_Card\n\
+  amount: 500.00\n\
+  notes: Opening of account\n\
 \n\
 transaction2:\n\
-  date: ['Date', '2013-08-22']\n\
-  transType: ['Type', 'Withdraw']\n\
-  category: ['Category', 'Food']\n\
-  amount: ['Amount', '12.56']\n\
-  notes: ['Notes', 'Wendys']\n\
+  date: 2013-08-22\n\
+  transType: Withdraw\n\
+  category: Food\n\
+  amount: 12.56\n\
+  notes: Wendys\n\
 \n\
 transaction3:\n\
-  date: ['Date', '2013-08-23']\n\
-  transType: ['Type', 'Adjustment']\n\
-  category: ['Category', 'Entertainment']\n\
-  amount: ['Amount', '54.67']\n\
-  notes: ['Notes', 'Movies']\n\
+  date: 2013-08-23\n\
+  transType: Adjustment\n\
+  category: Entertainment\n\
+  amount: 54.67\n\
+  notes: Movies\n\
 \n\
 transaction4:\n\
-  date: ['Date', '2013-08-24']\n\
-  transType: ['Type', 'Deposit']\n\
-  category: ['Category', 'Credit_Card']\n\
-  amount: ['Amount', '100.00']\n\
-  notes: ['Notes', 'Credit card payment']\n\
+  date: 2013-08-24\n\
+  transType: Deposit\n\
+  category: Credit_Card\n\
+  amount: 100.00\n\
+  notes: Credit card payment\n\
 \n\
 transaction5:\n\
-  date: ['Date', '2013-08-25']\n\
-  transType: ['Type', 'Withdraw']\n\
-  category: ['Category', 'Food']\n\
-  amount: ['Amount', '32.78']\n\
-  notes: ['Notes', 'Burger King']"
+  date: 2013-08-25\n\
+  transType: Withdraw\n\
+  category: Food\n\
+  amount: 32.78\n\
+  notes: Burger King"
   
 var yaml = jsyaml.load(yamlString);
   
