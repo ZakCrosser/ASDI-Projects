@@ -1,0 +1,10 @@
+{
+  "env": {
+    "local": {
+      "db": "http://127.0.0.1:5984/crosser_asd_project"
+    },
+    "cloudant": {
+    	"db": "https://tedstedgedlydalressecies:2EGwJljRwrQxh0fofY0a4L4O@zakcrosser.cloudant.com/asdiproject"
+    }
+  }
+}
